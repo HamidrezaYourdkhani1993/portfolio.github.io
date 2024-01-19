@@ -508,11 +508,53 @@ function initOwl(){
 function openWebsite(url) {
     window.location.href = url;
 }
-// Import lodash
-const _ = require('lodash');
 
-// Replace flatten with _.flatten
-const flattenedArray = _.flatten(yourArray);
-  
+document.addEventListener('DOMContentLoaded', function () {
+    var videoLinks = document.querySelectorAll('.popup-video');
 
-  
+    videoLinks.forEach(function (link) {
+        link.addEventListener('click', function (event) {
+            event.preventDefault();
+            var videoUrl = link.getAttribute('data-video');
+            openVideo(videoUrl);
+        });
+    });
+
+    function openVideo(videoUrl) {
+        // Create a modal element
+        var modal = document.createElement('div');
+        modal.classList.add('modal');
+
+        // Create a close button
+        var closeButton = document.createElement('button');
+        closeButton.innerText = 'Close';
+        closeButton.addEventListener('click', function () {
+            document.body.removeChild(modal);
+        });
+
+        // Create an embedded video player
+        var videoPlayer = document.createElement('video');
+        videoPlayer.setAttribute('controls', 'controls');
+        var source = document.createElement('source');
+        source.setAttribute('src', videoUrl);
+        source.setAttribute('type', 'video/mp4');
+        videoPlayer.appendChild(source);
+
+        // Append the video player and close button to the modal
+        modal.appendChild(videoPlayer);
+        modal.appendChild(closeButton);
+
+        // Append the modal to the body
+        document.body.appendChild(modal);
+
+        // Display the modal
+        modal.style.display = 'flex';
+
+        // Add a click event listener to close the modal when clicked outside the video or controls
+        modal.addEventListener('click', function (event) {
+            if (event.target === modal) {
+                document.body.removeChild(modal);
+            }
+        });
+    }
+});

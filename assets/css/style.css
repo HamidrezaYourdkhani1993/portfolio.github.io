@@ -2879,3 +2879,48 @@ E. Template Specific Elements
         left: 2.5rem;
     }
 }
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+}
+.modal video {
+    width: 80%;
+    max-height: 80%;
+}
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Style for the video player */
+        .modal video {
+            width: 80%;
+            max-height: 80%;
+        }
+
+        /* Style for the close button */
+        .modal button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
